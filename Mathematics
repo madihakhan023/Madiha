@@ -1,0 +1,524 @@
+# Define the numbers to be added
+num1 = 10
+num2 = 5
+
+# Perform addition
+result = num1 + num2
+
+# Print the result
+print("The sum of", num1, "and", num2, "is:", result)
+
+This code will output:
+The sum of 10 and 5 is: 15
+# Define the numbers to be subtracted
+num1 = 10
+num2 = 5
+
+# Perform subtraction
+result = num1 - num2
+
+# Print the result
+print("The difference between", num1, "and", num2, "is:", result)
+Define the numbers to be multiplied
+num1 = 10
+num2 = 5
+
+# Perform multiplication
+result = num1 * num2
+
+# Print the result
+print("The product of", num1, "and", num2, "is:", result)
+# Define the numbers to be divided
+num1 = 10
+num2 = 5
+
+# Perform division
+try:
+    result = num1 / num2
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+else:
+    # Print the result
+    print("The quotient of", num1, "and", num2, "is:", result)
+def factorial(n):
+  """
+  This function calculates the factorial of a non-negative integer.
+
+  Args:
+    n: The non-negative integer for which to calculate the factorial.
+
+  Returns:
+    The factorial of n.
+  """
+
+  if n == 0:
+    return 1
+  else:
+    return n * factorial(n-1)
+
+# Get input from the user
+num = int(input("Enter a non-negative integer: "))
+
+# Calculate and print the factorial
+if num < 0:
+  print("Factorial is not defined for negative numbers.")
+else:
+  result = factorial(num)
+  print("The factorial of", num, "is", result)
+class Animal:
+    """Base class for all animals"""
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        """Generic speak method"""
+        print("Animal sounds...")
+
+class Dog(Animal):
+    """Inherits from Animal"""
+    def __init__(self, name, breed):
+        super().__init__(name)  # Call the constructor of the parent class
+        self.breed = breed
+
+    def speak(self):
+        """Overridden speak method"""
+        print("Woof!")
+
+class Cat(Animal):
+    """Inherits from Animal"""
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color = color
+
+    def speak(self):
+        """Overridden speak method"""
+        print("Meow!")
+
+class GoldenRetriever(Dog):
+    """Multiple Inheritance: Inherits from Dog"""
+    def __init__(self, name):
+        super().__init__(name, "Golden Retriever") 
+        self.is_friendly = True
+
+# Creating objects
+animal1 = Animal("Generic Animal")
+dog1 = Dog("Buddy", "Labrador")
+cat1 = Cat("Whiskers", "Black")
+golden = GoldenRetriever("Sunny")
+
+# Demonstrating methods
+animal1.speak()  # Output: Animal sounds...
+dog1.speak()     # Output: Woof!
+cat1.speak()     # Output: Meow!
+golden.speak()   # Output: Woof! (Inherited from Dog)
+
+print(golden.breed)  # Output: Golden Retriever
+print(golden.is_friendly)  # Output: True
+class Employee:
+    """A class to represent an employee"""
+
+    def __init__(self, name, id, salary):
+        """Constructor: Initializes the employee object"""
+        self.name = name
+        self.id = id
+        self.salary = salary
+        print(f"Employee {self.name} (ID: {self.id}) created with salary: {self.salary}")
+
+    def display_info(self):
+        """Displays employee information"""
+        print(f"Name: {self.name}, ID: {self.id}, Salary: {self.salary}")
+
+    def __del__(self):
+        """Destructor: Called when the object is garbage collected"""
+        print(f"Employee {self.name} (ID: {self.id}) is being deleted.")
+
+# Create employee objects
+emp1 = Employee("John Doe", 101, 50000)
+emp2 = Employee("Jane Smith", 102, 60000)
+
+# Display employee information
+emp1.display_info()
+emp2.display_info()
+
+# Delete references to objects (trigger garbage collection)
+del emp1
+del emp2
+
+# Try to access deleted objects (should raise an error)
+try:
+    emp1.display_info()
+except NameError:
+    print("emp1 is no longer accessible.")
+
+try:
+    emp2.display_info()
+except NameError:
+    print("emp2 is no longer accessible.")
+
+print("Program execution complete.")
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    """Abstract base class for shapes"""
+
+    @abstractmethod
+    def area(self):
+        """Calculates and returns the area of the shape"""
+        pass
+
+class Circle(Shape):
+    """Represents a circle"""
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        """Calculates and returns the area of the circle"""
+        return 3.14159 * self.radius * self.radius
+
+class Rectangle(Shape):
+    """Represents a rectangle"""
+
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        """Calculates and returns the area of the rectangle"""
+        return self.width * self.height
+
+class Triangle(Shape):
+    """Represents a triangle"""
+
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        """Calculates and returns the area of the triangle"""
+        return 0.5 * self.base * self.height
+
+def calculate_area(shape):
+    """Calculates the area of any shape object"""
+    return shape.area()
+
+# Create objects of different shapes
+circle = Circle(5)
+rectangle = Rectangle(4, 6)
+triangle = Triangle(3, 8)
+
+# Calculate and print areas using the calculate_area function
+print(f"Area of circle: {calculate_area(circle)}")
+print(f"Area of rectangle: {calculate_area(rectangle)}")
+print(f"Area of triangle: {calculate_area(triangle)}")
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample Data (Replace with your actual data)
+data = pd.DataFrame({
+    'Date': pd.date_range(start='2023-01-01', end='2023-12-31', freq='D'),
+    'Sales': np.random.randint(100, 1000, size=365),
+    'Customers': np.random.randint(50, 200, size=365),
+    'Category': np.random.choice(['A', 'B', 'C'], size=365)
+})
+
+# Streamlit App
+st.title("Sales Dashboard")
+
+# Filter by Date Range
+start_date = st.date_input("Start Date", value=pd.to_datetime('2023-01-01'))
+end_date = st.date_input("End Date", value=pd.to_datetime('2023-12-31'))
+filtered_data = data[(data['Date'] >= start_date) & (data['Date'] <= end_date)]
+
+# Sales Metrics
+total_sales = filtered_data['Sales'].sum()
+avg_sales = filtered_data['Sales'].mean()
+st.metric(label="Total Sales", value=f"${total_sales:.2f}")
+st.metric(label="Average Sales", value=f"${avg_sales:.2f}")
+
+# Customer Metrics
+total_customers = filtered_data['Customers'].sum()
+avg_customers = filtered_data['Customers'].mean()
+st.metric(label="Total Customers", value=f"{total_customers}")
+st.metric(label="Average Customers", value=f"{avg_customers:.2f}")
+
+# Sales Trend Chart
+st.header("Sales Trend")
+fig, ax = plt.subplots()
+sns.lineplot(x='Date', y='Sales', data=filtered_data, ax=ax)
+plt.xticks(rotation=45)
+st.pyplot(fig)
+
+# Sales by Category
+st.header("Sales by Category")
+fig, ax = plt.subplots()
+sns.barplot(x='Category', y='Sales', data=filtered_data, ax=ax)
+st.pyplot(fig)
+
+# Customer Distribution
+st.header("Customer Distribution")
+fig, ax = plt.subplots()
+sns.histplot(filtered_data['Customers'], bins=20, ax=ax)
+st.pyplot(fig)
+import streamlit as st
+import time
+
+def display_time():
+    """Displays the current time in a Streamlit app."""
+    while True:
+        current_time = time.strftime("%Y-%m-%d %H:%M:%S")
+        st.write(f"Current Time: {current_time}")
+        time.sleep(1)  # Update every second
+
+if __name__ == "__main__":
+    st.title("Time Dashboard")
+    display_time()
+
+import streamlit as st
+import datetime
+import requests
+
+def get_weather(city):
+    """Fetches weather data from OpenWeatherMap API."""
+    api_key = "YOUR_API_KEY"  # Replace with your actual OpenWeatherMap API key
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an exception for bad status codes
+        data = response.json()
+        return data
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching weather data: {e}")
+        return None
+
+def display_dashboard():
+    st.title("Date & Climate Dashboard")
+
+    # Get current date and time
+    now = datetime.datetime.now()
+    date_string = now.strftime("%Y-%m-%d %H:%M:%S")
+    st.write(f"**Current Date & Time:** {date_string}")
+
+    # Get city input from user
+    city = st.text_input("Enter City Name:")
+
+    if city:
+        weather_data = get_weather(city)
+        if weather_data:
+            temperature = weather_data['main']['temp']
+            description = weather_data['weather'][0]['description']
+            st.write(f"**Temperature in {city}:** {temperature:.2f}°C")
+            st.write(f"**Weather Condition:** {description}")
+
+if __name__ == "__main__":
+    display_dashboard()
+import dash
+import dash_html_components as html
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div(style={'background-color': '#f0f0f0'}, children=[
+    # Your dashboard content here
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div([
+    dcc.Dropdown(
+        id='color-dropdown',
+        options=[
+            {'label': 'Light Gray', 'value': '#f0f0f0'},
+            {'label': 'Light Blue', 'value': '#e6f0ff'},
+            {'label': 'Light Green', 'value': '#e0ffe6'},
+            {'label': 'Light Yellow', 'value': '#fff0e6'},
+        ],
+        value='#f0f0f0'  # Default color
+    ),
+    html.Div(id='dashboard-container')
+])
+
+@app.callback(
+    dash.Output('dashboard-container', 'style'),
+    [dash.Input('color-dropdown', 'value')]
+)
+def update_background_color(selected_color):
+    return {'backgroundColor': selected_color}
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+import streamlit as st
+import screen_brightness_control as sbc
+
+def adjust_brightness():
+    """Adjusts screen brightness based on user input."""
+    brightness_level = st.slider("Brightness", min_value=0, max_value=100, value=50)
+    sbc.set_brightness(brightness_level)
+    st.write(f"Brightness set to: {brightness_level}%")
+
+if __name__ == "__main__":
+    st.title("Brightness Control")
+    adjust_brightness()
+import subprocess
+
+def adjust_volume(volume_level):
+    """
+    Adjusts the system volume using the `osascript` command on macOS.
+
+    Args:
+        volume_level: The desired volume level as a percentage (0-100).
+    """
+
+    if not 0 <= volume_level <= 100:
+        raise ValueError("Volume level must be between 0 and 100.")
+
+    osascript_command = f"osascript -e 'set volume output volume {volume_level}'"
+    subprocess.run(osascript_command, shell=True)
+
+# Example usage:
+desired_volume = 50  # Set the desired volume level (0-100)
+adjust_volume(desired_volume)
+import psutil
+
+def get_battery_info():
+    """
+    Gets the current battery information using the psutil library.
+
+    Returns:
+        A tuple containing:
+            - Battery percentage (int)
+            - Charging status (bool)
+            - Estimated time left (str)
+    """
+
+    try:
+        battery = psutil.sensors_battery()
+        percentage = battery.percent
+        charging = battery.power_plugged
+        time_left = str(battery.secsleft) 
+
+        return percentage, charging, time_left
+
+    except AttributeError:
+        return None, None, "Battery information unavailable"
+
+if __name__ == "__main__":
+    battery_percentage, charging, time_left = get_battery_info()
+
+    if battery_percentage is not None:
+        print(f"Battery Percentage: {battery_percentage}%")
+        print(f"Charging: {'Yes' if charging else 'No'}")
+        print(f"Estimated Time Left: {time_left}")
+    else:
+        print(time_left) 
+import psutil
+import time
+import notify2
+
+def check_battery_low():
+    """
+    Checks the battery level and displays a notification if it's low.
+
+    Args:
+        low_battery_threshold: The battery percentage threshold for triggering the notification.
+
+    Returns:
+        None
+    """
+
+    try:
+        battery = psutil.sensors_battery()
+        percentage = battery.percent
+
+        if percentage <= 20:  # Adjust threshold as needed
+            notify2.init("Battery Low Notification")
+            notification = notify2.Notification("Battery Low", "Battery level is below 20%. Please connect to a charger.")
+            notification.show()
+
+    except AttributeError:
+        print("Battery information unavailable.")
+
+if __name__ == "__main__":
+    while True:
+        check_battery_low()
+        time.sleep(60)  # Check every 60 seconds (adjust as needed)
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Generate sample data
+np.random.seed(42)
+X = np.random.rand(100, 1) * 10
+y = 2 * X + np.random.randn(100) * 2
+
+# Create a pandas DataFrame for better visualization
+df = pd.DataFrame({'X': X.flatten(), 'y': y})
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a linear regression model
+model = LinearRegression()
+
+# Train the model
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f'Mean Squared Error: {mse:.2f}')
+print(f'R-squared: {r2:.2f}')
+
+# Plot the results
+plt.scatter(X_train, y_train, color='blue', label='Training Data')
+plt.scatter(X_test, y_test, color='red', label='Testing Data')
+plt.plot(X_test, y_pred, color='green', linewidth=2, label='Regression Line')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.legend()
+plt.show()
+
+# Feature Engineering - Example: Adding polynomial features
+from sklearn.preprocessing import PolynomialFeatures
+
+poly_features = PolynomialFeatures(degree=2)
+X_train_poly = poly_features.fit_transform(X_train)
+X_test_poly = poly_features.transform(X_test)
+
+# Create and train a new model with polynomial features
+poly_model = LinearRegression()
+poly_model.fit(X_train_poly, y_train)
+
+# Make predictions with the polynomial model
+y_pred_poly = poly_model.predict(X_test_poly)
+
+# Evaluate the polynomial model
+mse_poly = mean_squared_error(y_test, y_pred_poly)
+r2_poly = r2_score(y_test, y_pred_poly)
+
+print(f'Polynomial Model - Mean Squared Error: {mse_poly:.2f}')
+print(f'Polynomial Model - R-squared: {r2_poly:.2f}')
+
+# Plot the results of the polynomial model
+plt.scatter(X_train, y_train, color='blue', label='Training Data')
+plt.scatter(X_test, y_test, color='red', label='Testing Data')
+plt.plot(X_test, y_pred_poly, color='green', linewidth=2, label='Polynomial Regression Line')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.legend()
+plt.show()
